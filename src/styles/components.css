@@ -179,6 +179,9 @@
   color: var(--color-slate-700);
   line-height: 1.45;
 }
+.c-comparison-row > span {
+  flex: 1;
+}
 .c-comparison-row__icon {
   margin-block-start: 0.125rem;
   font-size: 1.125rem;
