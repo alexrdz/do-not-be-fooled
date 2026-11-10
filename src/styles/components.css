@@ -126,7 +126,11 @@
   color: var(--color-slate-700);
 }
 .c-narrative__subtext { color: var(--color-slate-600); }
-
+.c-narrative__callout {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-crimson-600);
+}
 /* vector card */
 .c-vector-card {
   padding-block-start: 1.5rem;
