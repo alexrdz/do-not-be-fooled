@@ -1,0 +1,122 @@
+:root {
+  /* ==========================================================================
+     spacing & utopia fluid space scale (100% clamp-driven sizing)
+     https://utopia.fyi/space/calculator
+     ========================================================================== */
+
+  /* fluid spacing scale */
+  --space-3xs: .25rem;
+  --space-2xs: .5rem;
+  --space-xs: .75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* reading measure */
+  --measure: clamp(45ch, 60ch + 2vw, 70ch);
+  --measure-narrow: clamp(35ch, 45ch + 1vw, 50ch);
+  --measure-wide: clamp(65ch, 80ch + 2vw, 90ch);
+
+  /* container sizing */
+  --container-size-sm: clamp(36rem, 85vw, 65rem);
+  --container-size-md: clamp(48rem, 90vw, 75rem);
+  --container-size-lg: clamp(64rem, 95vw, 84.375rem);
+  --container-size-main: 88rem;
+
+  /* fluid layout gutters & padding */
+  --layout-container-padding-sm: clamp(1rem, 2vw + 0.5rem, 1.75rem);
+  --layout-container-padding-md: clamp(1.5rem, 3.5vw + 0.5rem, 3rem);
+  --layout-container-padding-lg: clamp(2rem, 5vw + 0.5rem, 4.5rem);
+
+  /* fluid primitive gaps */
+  --layout-stack-gap-sm: .75rem;
+  --layout-stack-gap-md: 1.5rem;
+  --layout-stack-gap-lg: 2rem;
+
+  --layout-cluster-gap-sm: .75rem;
+  --layout-cluster-gap-md: 1.5rem;
+  --layout-cluster-gap-lg: 2rem;
+
+  --layout-grid-gap-sm: .75rem;
+  --layout-grid-gap-md: 1.5rem;
+  --layout-grid-gap-lg: 2rem;
+
+  --layout-switcher-gap-sm: .75rem;
+  --layout-switcher-gap-md: 1.5rem;
+  --layout-switcher-gap-lg: 2rem;
+
+  --layout-switcher-collapse-sm: 30rem;
+  --layout-switcher-collapse-md: 48rem;
+  --layout-switcher-collapse-lg: 64rem;
+
+  /* input & button fluid padding standards */
+  --input-padding-block: clamp(0.5rem, 0.8vw, 0.688rem);
+  --input-padding-inline: clamp(0.75rem, 1.2vw, 1rem);
+  --btn-padding-block: var(--input-padding-block);
+  --btn-padding-inline: clamp(0.875rem, 1.8vw, 1.375rem);
+
+  /* shell persistent sizing */
+  --header-block-size: clamp(3.75rem, 5vw, 4.75rem);
+  --sidebar-inline-size: clamp(14rem, 18vw, 18rem);
+  --sidebar-inline-size-compact: clamp(4.5rem, 6vw, 5.5rem);
+
+  /* legacy space scale aliases */
+  --space-sm: var(--space-s);
+  --space-md: var(--space-m);
+  --space-lg: var(--space-l);
+
+  /* ==========================================================================
+     dnbf theme tokens
+     ========================================================================== */
+
+  /* colors */
+  --color-navy-950: #0b2545;
+  --color-crimson-600: #a31d1d;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-950: #020617;
+  --color-white: #ffffff;
+
+  /* semantic color aliases consumed by objects & components */
+  --color-bg-base: var(--color-slate-50);
+  --color-bg-raised: var(--color-white);
+  --color-bg-surface: var(--color-white);
+  --color-bg-subtle: var(--color-slate-50);
+  --color-bg-muted: var(--color-slate-100);
+  --color-fg-primary: var(--color-slate-950);
+  --color-fg-secondary: var(--color-slate-700);
+  --color-fg-muted: var(--color-slate-500);
+  --color-fg-inverted: var(--color-white);
+  --color-border-default: var(--color-slate-200);
+  --color-border-subtle: var(--color-slate-200);
+  --color-border-muted: var(--color-slate-400);
+  --color-brand-primary: var(--color-navy-950);
+  --color-brand-accent: var(--color-crimson-600);
+  --color-semantic-danger: var(--color-crimson-600);
+
+  /* radii */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+
+  /* typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --fluid-hero: clamp(3.2rem, 7.5vw, 8rem);
+  --fluid-heading: clamp(2.2rem, 4.5vw, 5rem);
+  --fluid-article-heading: clamp(1.875rem, 3.5vw, 3rem);
+
+  /* section rhythm + extra container widths */
+  --space-section: clamp(4rem, 8vw, 8rem);
+  --container-size-narrow: 56rem;
+  --container-size-wide: 80rem;
+}

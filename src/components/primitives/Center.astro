@@ -1,0 +1,15 @@
+---
+interface Props {
+  as?: any;
+  max?: "xs" | "sm" | "md" | "lg" | "measure";
+  padding?: "sm" | "md" | "lg";
+  intrinsic?: boolean;
+  centerText?: boolean;
+  centerVertically?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", max, padding, intrinsic, centerText, centerVertically, class: className, ...attrs } = Astro.props;
+const data = [max && `max:${max}`, padding && `padding:${padding}`, intrinsic && "intrinsic", centerText && "center:text", centerVertically && "center:vertically"].filter(Boolean).join(" ");
+---
+<Tag data-center={data} class={className} {...attrs}><slot /></Tag>

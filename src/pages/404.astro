@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/primitives/Container.astro";
+import Stack from "../components/primitives/Stack.astro";
+---
+<BaseLayout title="Page Not Found">
+  <header class="c-hero">
+    <Container width="narrow">
+      <Stack gap="lg" class="u-text-center">
+        <span class="u-kicker">404</span>
+        <h1 class="c-hero__title" data-size="article">This page doesn't exist.</h1>
+        <p class="c-hero__lead">
+          The facts, however, are still all here.
+        </p>
+        <div>
+          <a href="/" class="c-button" data-variant="outline" data-size="wide">
+            Back to the evidence
+          </a>
+        </div>
+      </Stack>
+    </Container>
+  </header>
+</BaseLayout>

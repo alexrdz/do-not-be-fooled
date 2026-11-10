@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/primitives/Container.astro";
+import Stack from "../components/primitives/Stack.astro";
+import ReportCard from "../components/ReportCard.astro";
+import YAML from "yaml";
+import sourcesRaw from "../data/sources.yaml?raw";
+import { TOPICS } from "../consts";
+
+const sources = YAML.parse(sourcesRaw) as {
+  title: string;
+  outlet: string;
+  url: string;
+  topic: string;
+}[];
+const groups = TOPICS.map((t) => ({
+  ...t,
+  items: sources.filter((s) => s.topic === t.slug),
+})).filter((g) => g.items.length > 0);
+---
+<BaseLayout title="Verifiable Source Log">
+  <header class="c-hero" data-variant="compact">
+    <Container width="narrow">
+      <Stack gap="md" class="u-text-center">
+        <h1 class="c-hero__title" data-size="article">Verifiable Source Log</h1>
+        <p class="c-hero__lead">
+          Every claim on this site is backed by a primary document, market
+          report, poll, or fact-check. {sources.length} references, grouped by
+          crisis.
+        </p>
+      </Stack>
+    </Container>
+  </header>
+
+  {groups.map((group, i) => (
+    <section class="c-section" data-variant={i % 2 === 0 ? undefined : "muted"}>
+      <Container width="narrow">
+        <Stack gap="lg">
+          <h2 class="c-section-title" data-size="article">
+            {group.label}
+            <span class="u-kicker"> — {group.items.length} sources</span>
+          </h2>
+          <Stack gap="md">
+            {group.items.map((s) => (
+              <ReportCard meta={s.outlet} title={s.title} href={s.url} />
+            ))}
+          </Stack>
+        </Stack>
+      </Container>
+    </section>
+  ))}
+</BaseLayout>

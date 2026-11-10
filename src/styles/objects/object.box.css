@@ -1,0 +1,66 @@
+[data-box] {
+  --box-padding: var(--space-s, 1rem);
+  --box-border-width: 1px;
+  --box-border-color: var(--color-border-default);
+  --box-bg: transparent;
+  --box-color: inherit;
+  --box-radius: var(--radius-md);
+
+  display: block;
+  padding: var(--box-padding);
+  border: var(--box-border-width) solid var(--box-border-color);
+  background-color: var(--box-bg);
+  color: var(--box-color);
+  border-radius: var(--box-radius);
+}
+
+[data-box~="variant:raised"] {
+  --box-bg: var(--color-bg-raised);
+  --box-border-color: var(--color-border-default);
+}
+
+[data-box~="variant:subtle"] {
+  --box-bg: var(--color-bg-subtle);
+  --box-border-color: var(--color-border-subtle);
+}
+
+[data-box~="variant:muted"] {
+  --box-bg: var(--color-bg-muted);
+  --box-border-color: var(--color-border-subtle);
+}
+
+[data-box~="invert"] {
+  --box-bg: var(--color-fg-primary);
+  --box-color: var(--color-bg-base);
+  --box-border-color: transparent;
+}
+
+[data-box~="border:none"] {
+  --box-border-width: 0;
+}
+
+[data-box~="radius:none"] {
+  --box-radius: 0;
+}
+
+[data-box~="radius:sm"] {
+  --box-radius: var(--radius-sm);
+}
+
+[data-box~="radius:lg"] {
+  --box-radius: var(--radius-lg);
+}
+
+/* Padding scale */
+[data-box~="padding:none"] { --box-padding: 0; }
+[data-box~="padding:xs"]   { --box-padding: var(--space-xs); }
+[data-box~="padding:s"],
+[data-box~="padding:sm"],
+[data-box~="padding:1"]    { --box-padding: var(--space-s); }
+[data-box~="padding:m"],
+[data-box~="padding:md"],
+[data-box~="padding:2"]    { --box-padding: var(--space-m); }
+[data-box~="padding:l"],
+[data-box~="padding:lg"],
+[data-box~="padding:3"]    { --box-padding: var(--space-l); }
+[data-box~="padding:xl"]   { --box-padding: var(--space-xl); }

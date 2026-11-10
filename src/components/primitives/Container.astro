@@ -1,0 +1,12 @@
+---
+interface Props {
+  as?: any;
+  width?: "narrow" | "sm" | "md" | "lg" | "wide" | "main";
+  padding?: "none" | "sm" | "md" | "lg";
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", width, padding, class: className, ...attrs } = Astro.props;
+const data = [width && `width:${width}`, padding && `padding:${padding}`].filter(Boolean).join(" ");
+---
+<Tag data-container={data} class={className} {...attrs}><slot /></Tag>

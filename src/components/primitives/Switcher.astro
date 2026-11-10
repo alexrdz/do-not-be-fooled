@@ -1,0 +1,14 @@
+---
+interface Props {
+  as?: any;
+  collapse?: "sm" | "md" | "lg";
+  limit?: 2 | 3 | 4;
+  gap?: "xs" | "sm" | "md" | "lg";
+  align?: "start" | "center" | "end";
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", collapse, limit, gap, align, class: className, ...attrs } = Astro.props;
+const data = [collapse && `collapse:${collapse}`, limit && `limit:${limit}`, gap && `gap:${gap}`, align && `align:${align}`].filter(Boolean).join(" ");
+---
+<Tag data-switcher={data} class={className} {...attrs}><slot /></Tag>

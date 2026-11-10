@@ -1,0 +1,13 @@
+---
+interface Props {
+  as?: any;
+  sidebar?: "sm" | "md" | "lg";
+  side?: "left" | "right";
+  gap?: "sm" | "md" | "lg";
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", sidebar, side, gap, class: className, ...attrs } = Astro.props;
+const data = [sidebar && `sidebar:${sidebar}`, side === "right" && "sidebar:right", gap && `gap:${gap}`].filter(Boolean).join(" ");
+---
+<Tag data-flanked={data} class={className} {...attrs}><slot /></Tag>

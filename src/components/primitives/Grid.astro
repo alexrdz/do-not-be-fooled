@@ -1,0 +1,12 @@
+---
+interface Props {
+  as?: any;
+  min?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl";
+  gap?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", min, gap, class: className, ...attrs } = Astro.props;
+const data = [min && `min:${min}`, gap && `gap:${gap}`].filter(Boolean).join(" ");
+---
+<Tag data-grid={data} class={className} {...attrs}><slot /></Tag>

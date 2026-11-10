@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/primitives/Container.astro";
+import Stack from "../components/primitives/Stack.astro";
+import Grid from "../components/primitives/Grid.astro";
+import Flanked from "../components/primitives/Flanked.astro";
+import VectorCard from "../components/VectorCard.astro";
+import ReportCard from "../components/ReportCard.astro";
+import { getCollection } from "astro:content";
+import YAML from "yaml";
+import sourcesRaw from "../data/sources.yaml?raw";
+import ledgerRaw from "../data/blame-ledger.yaml?raw";
+
+const crises = (await getCollection("crises")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const sources = YAML.parse(sourcesRaw) as {
+  title: string;
+  outlet: string;
+  url: string;
+  topic: string;
+}[];
+const ledger = YAML.parse(ledgerRaw) as {
+  claim: string;
+  verdict: string;
+  source_title: string;
+  source_url: string;
+}[];
+const featured = sources.slice(0, 6);
+---
+<BaseLayout>
+  <!-- Hero -->
+  <header class="c-hero">
+    <Container width="narrow">
+      <Stack gap="lg" class="u-text-center">
+        <h1 class="c-hero__title">Do Not Be Fooled.</h1>
+        <p class="c-hero__lead">
+          Three major problems are about to hit America hard: an AI bubble and a
+          possible economic crash, dangerously low oil reserves, and a bill that
+          cuts healthcare for working people. All trace back to one
+          administration — but the blame will be pointed somewhere else. Here
+          are the facts, with sources.
+        </p>
+      </Stack>
+    </Container>
+  </header>
+
+  <!-- Narrative -->
+  <section id="narrative" class="c-section" data-variant="muted">
+    <Container width="narrow">
+      <Flanked sidebar="lg" gap="lg">
+        <Stack gap="md">
+          <h2 class="c-section-title" data-size="article">What's Really Happening</h2>
+          <div class="c-accent-rule" aria-hidden="true"></div>
+        </Stack>
+        <Stack gap="md" class="c-narrative__body">
+          <p>
+            Economic and structural policies rarely show their costs right away.
+            The current administration has overseen a largely unregulated AI
+            spending spree, drained strategic oil reserves, and signed a budget
+            bill most Americans oppose.
+          </p>
+          <p class="c-narrative__subtext">
+            As the damage reaches daily life — higher prices, unstable energy,
+            a market correction — the media machine is already framing these as
+            somebody else's fault. This site documents the timeline of actions
+            that made them inevitable, with verifiable sources.
+          </p>
+        </Stack>
+      </Flanked>
+    </Container>
+  </section>
+
+  <!-- Crisis cards -->
+  <section id="crises" class="c-section">
+    <Container width="wide">
+      <Stack gap="xl">
+        <h2 class="c-section-title">The Three Crises Ahead</h2>
+        <Grid min="sm" gap="xl">
+          {crises.map((crisis) => (
+            <VectorCard
+              title={crisis.data.title}
+              tag={crisis.data.tag}
+              icon={crisis.data.icon}
+              text={crisis.data.summary}
+              narrative={crisis.data.narrative}
+              reality={crisis.data.reality}
+              href={`/crises/${crisis.id}`}
+            />
+          ))}
+        </Grid>
+      </Stack>
+    </Container>
+  </section>
+
+  <!-- Blame ledger -->
+  <section id="blame" class="c-section" data-variant="muted">
+    <Container width="narrow">
+      <Stack gap="xl">
+        <Stack gap="sm">
+          <h2 class="c-section-title" data-size="article">Who Gets the Blame</h2>
+          <p class="c-section-lead">
+            Fox News and Republican politicians blame Democrats for inflation,
+            gas prices, and economic pain — even when the fact-checkers say
+            otherwise.
+          </p>
+        </Stack>
+        <div class="c-ledger">
+          {ledger.map((row) => (
+            <div class="c-ledger__row">
+              <span class="c-ledger__claim">&ldquo;{row.claim}&rdquo;</span>
+              <span class="c-ledger__verdict">{row.verdict}</span>
+              <span class="c-ledger__source">
+                <a href={row.source_url} target="_blank" rel="noopener noreferrer">
+                  {row.source_title} &nearr;
+                </a>
+              </span>
+            </div>
+          ))}
+        </div>
+      </Stack>
+    </Container>
+  </section>
+
+  <!-- Source log -->
+  <section id="reports" class="c-section" data-variant="flat">
+    <Container width="narrow">
+      <Stack gap="xl">
+        <Stack gap="sm">
+          <h2 class="c-section-title" data-size="article">Verifiable Source Log</h2>
+          <p class="c-section-lead">
+            Primary reporting, market data, and poll results tracking the
+            origins of these crises.
+          </p>
+        </Stack>
+        <Stack gap="md">
+          {featured.map((s) => (
+            <ReportCard meta={s.outlet} title={s.title} href={s.url} />
+          ))}
+        </Stack>
+        <div class="u-text-center">
+          <a href="/sources" class="c-button" data-variant="outline" data-size="wide">
+            View all {sources.length} sources
+          </a>
+        </div>
+      </Stack>
+    </Container>
+  </section>
+</BaseLayout>

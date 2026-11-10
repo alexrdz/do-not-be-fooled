@@ -1,0 +1,12 @@
+---
+interface Props {
+  as?: any;
+  fixed?: boolean;
+  contain?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", fixed, contain, class: className, ...attrs } = Astro.props;
+const data = [fixed && "fixed", contain && "contain"].filter(Boolean).join(" ");
+---
+<Tag data-imposter={data} class={className} {...attrs}><slot /></Tag>

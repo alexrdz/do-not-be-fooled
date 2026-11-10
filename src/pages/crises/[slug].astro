@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import YAML from "yaml";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ReportCard from "../../components/ReportCard.astro";
+import Stack from "../../components/primitives/Stack.astro";
+import sourcesRaw from "../../data/sources.yaml?raw";
+
+export async function getStaticPaths() {
+  const crises = await getCollection("crises");
+  return crises.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const sources = (YAML.parse(sourcesRaw) as { url: string; title: string; outlet: string; topic: string }[]).filter(
+  (s) => s.topic === entry.id,
+);
+---
+<ArticleLayout
+  title={entry.data.title}
+  tag={entry.data.tag}
+  summary={entry.data.summary}
+>
+  <Content />
+  {sources.length > 0 && (
+    <Stack slot="sources" gap="md">
+      {sources.map((s) => (
+        <ReportCard meta={s.outlet} title={s.title} href={s.url} />
+      ))}
+    </Stack>
+  )}
+</ArticleLayout>

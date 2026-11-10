@@ -1,0 +1,13 @@
+---
+interface Props {
+  as?: any;
+  gap?: "3xs" | "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
+  align?: "start" | "center" | "end" | "stretch";
+  onlyChild?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", gap = "md", align, onlyChild, class: className, ...attrs } = Astro.props;
+const data = [gap && `gap:${gap}`, align && `align:${align}`, onlyChild && "only-child"].filter(Boolean).join(" ");
+---
+<Tag data-stack={data} class={className} {...attrs}><slot /></Tag>

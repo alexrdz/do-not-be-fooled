@@ -1,0 +1,10 @@
+---
+interface Props {
+  as?: any;
+  ratio?: "square" | "video" | "16/9" | "4/3" | "21/9" | "1";
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", ratio, class: className, ...attrs } = Astro.props;
+---
+<Tag data-frame={ratio ? `ratio:${ratio}` : ""} class={className} {...attrs}><slot /></Tag>

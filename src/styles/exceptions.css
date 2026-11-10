@@ -1,0 +1,47 @@
+/* CUBE exceptions: data-* variant & state rules */
+
+.c-button[data-variant="outline"] {
+  background-color: transparent;
+  color: var(--color-navy-950);
+  border: 2px solid var(--color-navy-950);
+  padding-block: 0.75rem;
+  padding-inline: 1.5rem;
+}
+
+.c-button[data-variant="outline"]:hover {
+  background-color: var(--color-navy-950);
+  color: var(--color-white);
+}
+
+.c-button[data-size="wide"] {
+  padding-block: 1rem;
+  padding-inline: 2rem;
+}
+
+.c-section[data-variant="muted"] {
+  background-color: var(--color-slate-50);
+}
+
+.c-section[data-variant="flat"] {
+  border-block-end: none;
+}
+
+.c-comparison-row[data-variant="false"] .c-comparison-row__icon {
+  color: var(--color-crimson-600);
+}
+
+.c-brand-badge[data-variant="footer"] {
+  line-height: 1;
+}
+
+.c-hero[data-variant="compact"] {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.c-hero__title[data-size="article"] {
+  font-size: var(--fluid-heading);
+}
+
+.c-section-title[data-size="article"] {
+  font-size: var(--fluid-article-heading);
+}

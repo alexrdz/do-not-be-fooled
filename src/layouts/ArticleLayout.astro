@@ -1,0 +1,51 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Container from "../components/primitives/Container.astro";
+import Stack from "../components/primitives/Stack.astro";
+import Icon from "../components/Icon.astro";
+
+interface Props {
+  title: string;
+  tag: string;
+  summary?: string;
+}
+const { title, tag, summary } = Astro.props;
+---
+<BaseLayout title={title}>
+  <header class="c-hero" data-variant="compact">
+    <Container width="narrow">
+      <Stack gap="md" class="u-text-center">
+        <span class="u-kicker">{tag}</span>
+        <h1 class="c-hero__title" data-size="article">{title}</h1>
+        {summary && <p class="c-hero__lead">{summary}</p>}
+      </Stack>
+    </Container>
+  </header>
+
+  <article class="c-section" data-variant="flat">
+    <Container width="narrow">
+      <div class="c-prose"><slot /></div>
+    </Container>
+  </article>
+
+  {Astro.slots.has("sources") && (
+    <section class="c-section" data-variant="muted">
+      <Container width="narrow">
+        <Stack gap="lg">
+          <h2 class="c-section-title" data-size="article">Documented Sources</h2>
+          <slot name="sources" />
+        </Stack>
+      </Container>
+    </section>
+  )}
+
+  <section class="c-section" data-variant="muted">
+    <Container width="narrow">
+      <div class="u-text-center">
+        <a href="/#crises" class="c-button" data-variant="outline">
+          <Icon name="arrow-left" size="0.9em" /> All crises
+        </a>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

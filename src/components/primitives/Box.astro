@@ -1,0 +1,14 @@
+---
+interface Props {
+  as?: any;
+  padding?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
+  variant?: "raised" | "subtle" | "muted" | "invert";
+  border?: "none";
+  radius?: "none" | "sm" | "md" | "lg";
+  class?: string;
+  [key: string]: any;
+}
+const { as: Tag = "div", padding, variant, border, radius, class: className, ...attrs } = Astro.props;
+const data = [padding && `padding:${padding}`, variant && `variant:${variant}`, border && `border:${border}`, radius && `radius:${radius}`, variant === "invert" && "invert"].filter(Boolean).join(" ");
+---
+<Tag data-box={data} class={className} {...attrs}><slot /></Tag>
