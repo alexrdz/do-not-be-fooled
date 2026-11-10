@@ -28,6 +28,7 @@ const ledger = YAML.parse(ledgerRaw) as {
 }[];
 const featured = sources.slice(0, 6);
 ---
+
 <BaseLayout>
   <!-- Hero -->
   <header class="c-hero">
@@ -37,8 +38,8 @@ const featured = sources.slice(0, 6);
         <p class="c-hero__lead">
           Three major problems are about to hit America hard: an AI bubble and a
           possible economic crash, dangerously low oil reserves, and a bill that
-          cuts healthcare for working people. All trace back to one
-          administration — but the blame will be pointed somewhere else. Here
+          cuts healthcare for working people. All trace back to the current
+          administration but the blame will surely be blamed on Democrats. Here
           are the facts, with sources.
         </p>
       </Stack>
@@ -50,7 +51,9 @@ const featured = sources.slice(0, 6);
     <Container width="narrow">
       <Flanked sidebar="lg" gap="lg">
         <Stack gap="md">
-          <h2 class="c-section-title" data-size="article">What's Really Happening</h2>
+          <h2 class="c-section-title" data-size="article">
+            What's Really Happening
+          </h2>
           <div class="c-accent-rule" aria-hidden="true"></div>
         </Stack>
         <Stack gap="md" class="c-narrative__body">
@@ -61,10 +64,10 @@ const featured = sources.slice(0, 6);
             bill most Americans oppose.
           </p>
           <p class="c-narrative__subtext">
-            As the damage reaches daily life — higher prices, unstable energy,
-            a market correction — the media machine is already framing these as
-            somebody else's fault. This site documents the timeline of actions
-            that made them inevitable, with verifiable sources.
+            As the damage brought upon by higher prices, unstable energy, and a
+            market correction reaches daily life, the media machine will frame
+            these as somebody else's fault. This site aims to document the
+            actions that made them inevitable, with verifiable sources.
           </p>
         </Stack>
       </Flanked>
@@ -77,17 +80,19 @@ const featured = sources.slice(0, 6);
       <Stack gap="xl">
         <h2 class="c-section-title">The Three Crises Ahead</h2>
         <Grid min="sm" gap="xl">
-          {crises.map((crisis) => (
-            <VectorCard
-              title={crisis.data.title}
-              tag={crisis.data.tag}
-              icon={crisis.data.icon}
-              text={crisis.data.summary}
-              narrative={crisis.data.narrative}
-              reality={crisis.data.reality}
-              href={`/crises/${crisis.id}`}
-            />
-          ))}
+          {
+            crises.map((crisis) => (
+              <VectorCard
+                title={crisis.data.title}
+                tag={crisis.data.tag}
+                icon={crisis.data.icon}
+                text={crisis.data.summary}
+                narrative={crisis.data.narrative}
+                reality={crisis.data.reality}
+                href={`/crises/${crisis.id}`}
+              />
+            ))
+          }
         </Grid>
       </Stack>
     </Container>
@@ -98,25 +103,34 @@ const featured = sources.slice(0, 6);
     <Container width="narrow">
       <Stack gap="xl">
         <Stack gap="sm">
-          <h2 class="c-section-title" data-size="article">Who Gets the Blame</h2>
+          <h2 class="c-section-title" data-size="article">
+            Who Gets the Blame
+          </h2>
           <p class="c-section-lead">
             Fox News and Republican politicians blame Democrats for inflation,
-            gas prices, and economic pain — even when the fact-checkers say
-            otherwise.
+            gas prices, and economic pain <strong
+              >even when the fact-checkers say otherwise.</strong
+            >
           </p>
         </Stack>
         <div class="c-ledger">
-          {ledger.map((row) => (
-            <div class="c-ledger__row">
-              <span class="c-ledger__claim">&ldquo;{row.claim}&rdquo;</span>
-              <span class="c-ledger__verdict">{row.verdict}</span>
-              <span class="c-ledger__source">
-                <a href={row.source_url} target="_blank" rel="noopener noreferrer">
-                  {row.source_title} &nearr;
-                </a>
-              </span>
-            </div>
-          ))}
+          {
+            ledger.map((row) => (
+              <div class="c-ledger__row">
+                <span class="c-ledger__claim">&ldquo;{row.claim}&rdquo;</span>
+                <span class="c-ledger__verdict">{row.verdict}</span>
+                <span class="c-ledger__source">
+                  <a
+                    href={row.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {row.source_title} &nearr;
+                  </a>
+                </span>
+              </div>
+            ))
+          }
         </div>
       </Stack>
     </Container>
@@ -127,19 +141,28 @@ const featured = sources.slice(0, 6);
     <Container width="narrow">
       <Stack gap="xl">
         <Stack gap="sm">
-          <h2 class="c-section-title" data-size="article">Verifiable Source Log</h2>
+          <h2 class="c-section-title" data-size="article">
+            Verifiable Source Log
+          </h2>
           <p class="c-section-lead">
             Primary reporting, market data, and poll results tracking the
             origins of these crises.
           </p>
         </Stack>
         <Stack gap="md">
-          {featured.map((s) => (
-            <ReportCard meta={s.outlet} title={s.title} href={s.url} />
-          ))}
+          {
+            featured.map((s) => (
+              <ReportCard meta={s.outlet} title={s.title} href={s.url} />
+            ))
+          }
         </Stack>
         <div class="u-text-center">
-          <a href="/sources" class="c-button" data-variant="outline" data-size="wide">
+          <a
+            href="/sources"
+            class="c-button"
+            data-variant="outline"
+            data-size="wide"
+          >
             View all {sources.length} sources
           </a>
         </div>
