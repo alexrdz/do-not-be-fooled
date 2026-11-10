@@ -1,5 +1,6 @@
 ---
 import Stack from "./primitives/Stack.astro";
+import Cluster from "./primitives/Cluster.astro";
 import Icon from "./Icon.astro";
 interface Props {
   title: string;
@@ -12,24 +13,34 @@ interface Props {
 }
 const { title, tag, icon, text, href, narrative, reality } = Astro.props;
 ---
-<article class="c-vector-card">
+
+<Stack as="article" gap="lg" justify="between" fill class="c-vector-card">
   <Stack gap="md" class="c-vector-card__main">
-    <div class="c-vector-card__meta">
-      <div class="c-vector-card__icon-box"><Icon name={icon} size="1.5rem" /></div>
+    <Cluster justify="between" align="center" class="c-vector-card__meta">
+      <div class="c-vector-card__icon-box">
+        <Icon name={icon} size="1.5rem" />
+      </div>
       <span class="c-vector-card__tag">{tag}</span>
-    </div>
-    <h3 class="c-vector-card__title">{href ? <a href={href}>{title}</a> : title}</h3>
+    </Cluster>
+    <h3 class="c-vector-card__title">
+      {href ? <a href={href}>{title}</a> : title}
+    </h3>
     <p class="c-vector-card__text">{text}</p>
   </Stack>
   <Stack gap="sm" class="c-vector-card__comparison">
     <span class="c-comparison-heading">Media Narrative vs Reality</span>
-    <div class="c-comparison-row" data-variant="false">
+    <Cluster
+      gap="xs"
+      align="start"
+      class="c-comparison-row"
+      data-variant="false"
+    >
       <Icon name="close-circle" class="c-comparison-row__icon" />
       <span>{narrative}</span>
-    </div>
-    <div class="c-comparison-row">
+    </Cluster>
+    <Cluster gap="xs" align="start" class="c-comparison-row">
       <Icon name="check-circle" class="c-comparison-row__icon" />
       <span>{reality}</span>
-    </div>
+    </Cluster>
   </Stack>
-</article>
+</Stack>

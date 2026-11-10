@@ -1,14 +1,17 @@
 ---
 import Container from "./primitives/Container.astro";
+import Cluster from "./primitives/Cluster.astro";
 ---
 <nav class="c-site-nav">
-  <Container width="wide" class="c-site-nav__inner">
-    <a href="/" class="c-brand-badge" aria-label="DNBF Home">DNBF</a>
-    <div class="c-site-nav__links">
-      <a href="/#narrative" class="c-site-nav__link">The Narrative</a>
-      <a href="/#crises" class="c-site-nav__link">Looming Crises</a>
-      <a href="/sources" class="c-site-nav__link">Verifiable Reports</a>
-    </div>
-    <a href="/sources" class="c-button" data-variant="outline">View Sources</a>
+  <Container width="wide">
+    <Cluster justify="between" align="center" class="c-site-nav__inner">
+      <a href="/" class="c-brand-badge" aria-label="DNBF Home">DNBF</a>
+      <div class="c-site-nav__links">
+        <a href="/#narrative" class="c-site-nav__link">The Narrative</a>
+        <a href="/#crises" class="c-site-nav__link">Looming Crises</a>
+        <a href="/sources" class="c-site-nav__link">Verifiable Reports</a>
+      </div>
+      <a href="/sources" class="c-button" data-variant="outline">View Sources</a>
+    </Cluster>
   </Container>
 </nav>

@@ -1,6 +1,8 @@
 ---
+import type { HTMLTag } from "astro/types";
+
 interface Props {
-  as?: any;
+  as?: HTMLTag;
   min?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl";
   gap?: "none" | "xs" | "sm" | "md" | "lg" | "xl";
   class?: string;

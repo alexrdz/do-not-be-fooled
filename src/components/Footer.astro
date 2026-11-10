@@ -1,12 +1,16 @@
 ---
 import Container from "./primitives/Container.astro";
+import Switcher from "./primitives/Switcher.astro";
+import Stack from "./primitives/Stack.astro";
 ---
 <footer class="c-site-footer">
-  <Container width="wide" class="c-site-footer__inner">
-    <div class="c-site-footer__brand">
-      <span class="c-brand-badge" data-variant="footer">DNBF.</span>
-      <p class="c-site-footer__desc">Independent timeline analysis and verifiable sourcing.</p>
-    </div>
-    <div class="c-site-footer__meta">&copy; 2026 Do Not Be Fooled. All analysis strictly cited.</div>
+  <Container width="wide">
+    <Switcher collapse="md" align="center" gap="lg" class="c-site-footer__inner">
+      <Stack gap="xs" align="center" class="c-site-footer__brand">
+        <span class="c-brand-badge" data-variant="footer">DNBF.</span>
+        <p class="c-site-footer__desc">Independent timeline analysis and verifiable sourcing.</p>
+      </Stack>
+      <div class="c-site-footer__meta">&copy; 2026 Do Not Be Fooled. All analysis strictly cited.</div>
+    </Switcher>
   </Container>
 </footer>

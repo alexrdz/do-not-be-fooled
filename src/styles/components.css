@@ -26,9 +26,6 @@
   border-block-end: 1px solid var(--color-border-default);
 }
 .c-site-nav__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   min-block-size: 6rem;
 }
 .c-site-nav__links {
@@ -132,18 +129,8 @@
 
 /* vector card */
 .c-vector-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--space-l);
   padding-block-start: 1.5rem;
   border-block-start: 2px solid var(--color-navy-950);
-  block-size: 100%;
-}
-.c-vector-card__meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .c-vector-card__icon-box {
   inline-size: 3rem;
@@ -188,9 +175,6 @@
   color: var(--color-crimson-600);
 }
 .c-comparison-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
   font-size: 0.875rem;
   color: var(--color-slate-700);
   line-height: 1.45;
@@ -255,18 +239,6 @@
   transition: border-color 150ms ease-in-out;
 }
 .c-report-card:hover { border-color: var(--color-navy-950); }
-.c-report-card__inner {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: space-between;
-}
-@media (min-width: 48rem) {
-  .c-report-card__inner {
-    flex-direction: row;
-    align-items: center;
-  }
-}
 .c-report-card__content { flex: 1 1 auto; }
 .c-report-card__meta {
   display: block;
@@ -316,25 +288,14 @@
   background-color: var(--color-white);
 }
 .c-site-footer__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  gap: 1.5rem;
 }
 @media (min-width: 48rem) {
-  .c-site-footer__inner {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: start;
-  }
-  .c-site-footer__brand { align-items: flex-start; }
+  .c-site-footer__inner { text-align: start; }
 }
-.c-site-footer__brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+.c-site-footer__meta { text-align: center; }
+@media (min-width: 48rem) {
+  .c-site-footer__meta { text-align: end; }
 }
 .c-site-footer__desc,
 .c-site-footer__meta {

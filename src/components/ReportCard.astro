@@ -1,5 +1,6 @@
 ---
 import Stack from "./primitives/Stack.astro";
+import Cluster from "./primitives/Cluster.astro";
 import Icon from "./Icon.astro";
 interface Props {
   meta: string;
@@ -10,12 +11,12 @@ interface Props {
 const { meta, title, text, href } = Astro.props;
 ---
 <a href={href} class="c-report-card" target="_blank" rel="noopener noreferrer">
-  <div class="c-report-card__inner">
+  <Cluster justify="between" align="center" gap="lg" class="c-report-card__inner">
     <Stack gap="2xs" class="c-report-card__content">
       <span class="c-report-card__meta">{meta}</span>
       <h3 class="c-report-card__title">{title}</h3>
       {text && <p class="c-report-card__text">{text}</p>}
     </Stack>
     <div class="c-report-card__action" aria-hidden="true"><Icon name="arrow-right-up" /></div>
-  </div>
+  </Cluster>
 </a>

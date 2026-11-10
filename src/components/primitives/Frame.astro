@@ -1,6 +1,8 @@
 ---
+import type { HTMLTag } from "astro/types";
+
 interface Props {
-  as?: any;
+  as?: HTMLTag;
   ratio?: "square" | "video" | "16/9" | "4/3" | "21/9" | "1";
   class?: string;
   [key: string]: any;

@@ -1,6 +1,8 @@
 ---
+import type { HTMLTag } from "astro/types";
+
 interface Props {
-  as?: any;
+  as?: HTMLTag;
   padding?: "none" | "sm" | "md" | "lg";
   height?: 25 | 50 | 75 | 100;
   class?: string;

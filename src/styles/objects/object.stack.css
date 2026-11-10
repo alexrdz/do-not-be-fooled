@@ -37,3 +37,11 @@
 [data-stack~="only-child"]:only-child {
   block-size: 100%;
 }
+
+/* Distribution */
+[data-stack~="justify:between"] { justify-content: space-between; }
+[data-stack~="justify:center"]  { justify-content: center; }
+[data-stack~="justify:end"]     { justify-content: flex-end; }
+
+/* Fill available block size */
+[data-stack~="fill"] { block-size: 100%; }

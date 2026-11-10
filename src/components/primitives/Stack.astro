@@ -1,13 +1,17 @@
 ---
+import type { HTMLTag } from "astro/types";
+
 interface Props {
-  as?: any;
+  as?: HTMLTag;
   gap?: "3xs" | "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
   align?: "start" | "center" | "end" | "stretch";
+  justify?: "between" | "center" | "end";
+  fill?: boolean;
   onlyChild?: boolean;
   class?: string;
   [key: string]: any;
 }
-const { as: Tag = "div", gap = "md", align, onlyChild, class: className, ...attrs } = Astro.props;
-const data = [gap && `gap:${gap}`, align && `align:${align}`, onlyChild && "only-child"].filter(Boolean).join(" ");
+const { as: Tag = "div", gap = "md", align, justify, fill, onlyChild, class: className, ...attrs } = Astro.props;
+const data = [gap && `gap:${gap}`, align && `align:${align}`, justify && `justify:${justify}`, fill && "fill", onlyChild && "only-child"].filter(Boolean).join(" ");
 ---
 <Tag data-stack={data} class={className} {...attrs}><slot /></Tag>
