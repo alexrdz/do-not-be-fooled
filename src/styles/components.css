@@ -306,6 +306,35 @@
   font-size: 0.75rem;
   color: var(--color-slate-500);
 }
+.c-site-footer__nav {
+  > a::after {
+    content: '•';
+    margin-inline: 0.5rem;
+    color: var(--color-slate-300);
+  }
+  > a:last-child::after {
+    display: none;
+  }
+
+  @media (min-width: 48rem) {
+    --justify: end;
+  }
+}
+.c-site-footer__brand {
+  @media (min-width: 48rem) {
+    --stack-align: start;
+  }
+}
+.c-site-footer__link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-slate-600);
+  transition: color 150ms ease-in-out;
+}
+.c-site-footer__link:hover { color: var(--color-crimson-600); }
 
 /* prose (article pages) */
 .c-prose {

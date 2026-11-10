@@ -545,17 +545,12 @@ button {
   }
 }
 
-.site-footer__brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.c-site-footer__brand {
+  --stack-align: start;
+  background-color: red;
 }
 
-@media (min-width: 48rem) {
-  .site-footer__brand {
-    align-items: flex-start;
-  }
-}
+
 
 .site-footer__desc,
 .site-footer__meta {

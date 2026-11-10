@@ -1,16 +1,51 @@
 ---
+import { getCollection } from "astro:content";
 import Container from "./primitives/Container.astro";
 import Switcher from "./primitives/Switcher.astro";
 import Stack from "./primitives/Stack.astro";
+import Cluster from "./primitives/Cluster.astro";
+
+const crises = (await getCollection("crises")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
+
 <footer class="c-site-footer">
   <Container width="wide">
-    <Switcher collapse="md" align="center" gap="lg" class="c-site-footer__inner">
+    <Switcher
+      collapse="md"
+      align="center"
+      gap="lg"
+      class="c-site-footer__inner"
+    >
       <Stack gap="xs" align="center" class="c-site-footer__brand">
         <span class="c-brand-badge" data-variant="footer">DNBF.</span>
-        <p class="c-site-footer__desc">Independent timeline analysis and verifiable sourcing.</p>
+        <p class="c-site-footer__desc">
+          Independent timeline analysis and verifiable sourcing.
+        </p>
       </Stack>
-      <div class="c-site-footer__meta">&copy; 2026 Do Not Be Fooled. All analysis strictly cited.</div>
+      <Stack>
+        <Cluster
+          gap="sm"
+          as="nav"
+          justify="center"
+          class="c-site-footer__nav"
+          aria-label="Footer"
+        >
+          <a href="/" class="c-site-footer__link">Home</a>
+          {
+            crises.map((crisis) => (
+              <a href={`/crises/${crisis.id}`} class="c-site-footer__link">
+                {crisis.data.title}
+              </a>
+            ))
+          }
+          <a href="/sources" class="c-site-footer__link">Sources</a>
+        </Cluster>
+        <div class="c-site-footer__meta">
+          &copy; 2026 Do Not Be Fooled. All analysis strictly cited.
+        </div>
+      </Stack>
     </Switcher>
   </Container>
 </footer>
