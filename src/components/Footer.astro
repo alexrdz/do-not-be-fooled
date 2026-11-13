@@ -1,4 +1,5 @@
 ---
+import { execSync } from "node:child_process";
 import { getCollection } from "astro:content";
 import Container from "./primitives/Container.astro";
 import Switcher from "./primitives/Switcher.astro";
@@ -7,6 +8,17 @@ import Cluster from "./primitives/Cluster.astro";
 
 const crises = (await getCollection("crises")).sort(
   (a, b) => a.data.order - b.data.order,
+);
+
+const lastCommitIso = execSync("git log -1 --format=%cs").toString().trim();
+const lastCommitDate = new Date(`${lastCommitIso}T00:00:00Z`).toLocaleDateString(
+  "en-US",
+  {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  },
 );
 ---
 
@@ -43,9 +55,13 @@ const crises = (await getCollection("crises")).sort(
           <a href="/sources" class="c-site-footer__link">Sources</a>
         </Cluster>
         <div class="c-site-footer__meta">
-          &copy; 2026 Do Not Be Fooled. All analysis strictly cited.
+          <p>&copy; 2026 Do Not Be Fooled. All analysis strictly cited.</p>
+          <p>
+            Site updated <time datetime={lastCommitIso}>{lastCommitDate}</time>
+          </p>
         </div>
       </Stack>
     </Switcher>
   </Container>
 </footer>
+
