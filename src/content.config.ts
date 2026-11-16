@@ -15,4 +15,16 @@ const crises = defineCollection({
   }),
 });
 
-export const collections = { crises };
+const updates = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/updates" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default("DNBF Staff"),
+    tag: z.string().default("Update"),
+  }),
+});
+
+export const collections = { crises, updates };
