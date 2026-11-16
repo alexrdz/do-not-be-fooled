@@ -26,6 +26,9 @@ importers:
       astro:
         specifier: ^7.4.8
         version: 7.4.8(@types/node@24.19.2)(esbuild@0.28.2)(yaml@2.9.1)
+      lite-youtube-embed:
+        specifier: ^0.4.0
+        version: 0.4.0
       yaml:
         specifier: ^2.9.1
         version: 2.9.1
@@ -1206,6 +1209,9 @@ packages:
   lightningcss@1.33.0:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
+
+  lite-youtube-embed@0.4.0:
+    resolution: {integrity: sha512-82CmQVLWv1P1FNUWgiXJtbkBQbyF8UQB0s0F+pSegbcx53uylX4kgJ6QJsXseVHzNtVxa9t8yjryA2B9sTkFKg==}
 
   lru-cache@11.5.3:
     resolution: {integrity: sha512-U4N8FgzmWxc8k1VH8Kr6lQg18U7Fjvby6wXHVRX/ZZ7IwWbRMgrRbP0Wrb5q5NVinryp4SQampHKdvtecItxUg==}
@@ -2846,6 +2852,8 @@ snapshots:
       lightningcss-linux-x64-musl: 1.33.0
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
+
+  lite-youtube-embed@0.4.0: {}
 
   lru-cache@11.5.3: {}
 

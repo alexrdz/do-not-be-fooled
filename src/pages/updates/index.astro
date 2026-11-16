@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/primitives/Container.astro";
+import Stack from "../../components/primitives/Stack.astro";
+import Icon from "../../components/Icon.astro";
+import { getCollection } from "astro:content";
+
+const updates = (await getCollection("updates")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+---
+
+<BaseLayout
+  title="Updates"
+  description="Ongoing timeline analysis, policy tracking, and verifiable reporting."
+>
+  <header class="c-hero" data-variant="compact">
+    <Container width="narrow">
+      <Stack gap="md" class="u-text-center">
+        <span class="u-kicker">Timeline & Reporting</span>
+        <h1 class="c-hero__title" data-size="article">Updates</h1>
+        <p class="c-hero__lead">
+          Ongoing reporting, policy analysis, and developments tracking the
+          looming economic, energy, and legislative crises.
+        </p>
+      </Stack>
+    </Container>
+  </header>
+
+  <section class="c-section" data-variant="flat">
+    <Container width="narrow">
+      <Stack gap="lg">
+        {updates.length === 0 ? (
+          <p class="c-section-lead u-text-center">No updates published yet.</p>
+        ) : (
+          updates.map((post) => (
+            <a href={`/updates/${post.id}`} class="c-update-card">
+              <Stack gap="sm">
+                <div class="c-update-card__meta">
+                  <span>{post.data.tag}</span>
+                  <span aria-hidden="true">•</span>
+                  <time
+                    datetime={post.data.pubDate.toISOString()}
+                    class="c-update-card__date"
+                  >
+                    {formatDate(post.data.pubDate)}
+                  </time>
+                </div>
+                <h2 class="c-update-card__title">{post.data.title}</h2>
+                <p class="c-update-card__desc">{post.data.description}</p>
+                <div class="c-update-card__action">
+                  <span>Read update</span>
+                  <Icon name="arrow-right-up" size="0.9em" />
+                </div>
+              </Stack>
+            </a>
+          ))
+        )}
+      </Stack>
+    </Container>
+  </section>
+</BaseLayout>

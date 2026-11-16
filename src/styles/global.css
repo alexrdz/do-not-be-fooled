@@ -2,6 +2,7 @@
 
 @import url("./tokens.css") layer(settings);
 @import url("./reset.css") layer(reset);
+@import "lite-youtube-embed/src/lite-yt-embed.css" layer(vendor);
 @import url("./elements.css") layer(elements);
 @import url("./objects/index.css") layer(objects);
 @import url("./components.css") layer(components);
