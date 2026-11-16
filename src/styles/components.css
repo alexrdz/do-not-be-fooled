@@ -86,13 +86,23 @@
 
 /* button base */
 .c-button {
-  display: inline-block;
+  /* display: inline-block; */
+  --button-width: initial;
+  inline-size: var(--button-width);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   transition: all 180ms ease-in-out;
+}
+
+.c-button[data-width~=md] {
+  --button-width: 30ch;
+}
+
+.c-button:has(svg) {
+  margin-inline: auto;
 }
 
 /* sections */

@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Container from "../../components/primitives/Container.astro";
 import Stack from "../../components/primitives/Stack.astro";
 import Icon from "../../components/Icon.astro";
+import Cluster from "../../components/primitives/Cluster.astro";
 
 export async function getStaticPaths() {
   const updates = await getCollection("updates");
@@ -59,11 +60,9 @@ function formatDate(date: Date) {
 
   <section class="c-section" data-variant="muted">
     <Container width="narrow">
-      <div class="u-text-center">
-        <a href="/updates" class="c-button" data-variant="outline">
+        <Cluster as="a" href="/updates" class="c-button" data-variant="outline" data-width="md" justify="center">
           <Icon name="arrow-left" size="0.9em" /> All Updates
-        </a>
-      </div>
+        </Cluster>
     </Container>
   </section>
 </BaseLayout>
